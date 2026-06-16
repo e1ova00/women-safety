@@ -1,0 +1,99 @@
+﻿
+
+.btn {
+  display: inline-block;
+  position: relative;
+  border-radius: var(--radius-pill);
+  padding: var(--space-16) var(--space-32); 
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden; 
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: clamp(20px, 1.875vw, 36px);
+  font-weight: var(--fw-medium);
+  
+  box-shadow: 0 0 40px 8px var(--glow-soft);
+}
+
+.btn--primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 60px 14px var(--glow-strong);
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.btn--primary:hover::before {
+  animation: shine 0.8s ease;
+}
+
+.btn--store {
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 1);
+  font-size: var(--fs-body);
+  padding: var(--space-8) var(--space-24);
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.btn--store:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--glow-soft);
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  
+  transition: width 0.18s ease, height 0.18s ease, opacity 0.18s ease;
+  box-shadow: 0 0 12px 3px var(--glow-soft);
+}
+
+.custom-cursor--hover {
+  width: 32px;
+  height: 32px;
+}
+
+@media (pointer: coarse) {
+  .custom-cursor { display: none; }
+}
+
+.burger {
+  display: none; 
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+
+.burger span {
+  width: 28px;
+  height: 2px;
+  background: var(--color-black);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}

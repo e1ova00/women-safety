@@ -1,0 +1,77 @@
+﻿
+
+:root {
+
+  
+  --color-primary:    #FE316E;  
+  --color-bg-pink:    #FFE6ED;  
+  --color-bubble:     #FEA2BD;  
+  --color-bubble-soft:#FFD4E1;  
+  --color-white:      #FFFFFF;
+  --color-black:      #000000;
+
+  
+  --glow-soft:   rgba(254, 49, 110, 0.25);
+  --glow-strong: rgba(254, 49, 110, 0.45);
+
+  
+  
+  --font-main: 'Milligram', 'Onest', system-ui, sans-serif;
+
+  --fw-light:  300;
+  --fw-medium: 500;
+
+  
+  --fs-h1:    clamp(28px, 2.5vw, 48px);
+  --fs-h2:    clamp(28px, 2.5vw, 48px);   
+  --fs-h3:    clamp(20px, 1.875vw, 36px); 
+  --fs-body:  clamp(15px, 1.25vw, 24px);  
+  --fs-logo:  clamp(18px, 1.667vw, 32px);
+
+  --lh-body: 1.35;
+
+  
+  --space-8:   8px;
+  --space-16:  16px;
+  --space-24:  24px;   
+  --space-32:  32px;
+  --space-40:  40px;   
+  --space-48:  48px;
+  --space-64:  64px;
+  --space-section: clamp(80px, 11.25vw, 216px);  
+
+  
+  
+  --container-width: 1300px;
+  --container-pad: 40px;   
+
+  
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;  
+
+  --transition-fast: 0.2s ease;
+  --transition-med:  0.4s ease;
+}
+
+@font-face {
+  font-family: 'Milligram';
+  src: url('../fonts/Milligram-Light-trial.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: 'Milligram';
+  src: url('../fonts/Milligram-Regular-trial.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Milligram';
+  src: url('../fonts/Milligram-Medium-trial.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}

@@ -1,0 +1,114 @@
+﻿
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes float-mirrored {
+  0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); }
+  50%      { transform: scaleX(-1) translateY(-12px) rotate(-2deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes header-glow {
+  from { background-position: 0% 0; }
+  to   { background-position: 100% 0; }
+}
+
+@keyframes shine {
+  from { left: -80%; }
+  to   { left: 130%; }
+}
+
+@keyframes cloud-arrive-left {
+  0%   { opacity: 0; transform: translate(-160px, 25px) scale(0.72) rotate(-4deg); }
+  70%  { opacity: 1; transform: translate(12px, -6px)  scale(1.04) rotate(1deg); }
+  100% { opacity: 1; transform: translate(0, 0)         scale(1)    rotate(0deg); }
+}
+
+@keyframes cloud-arrive-right {
+  0%   { opacity: 0; transform: translate(160px, 25px) scale(0.72) rotate(4deg); }
+  70%  { opacity: 1; transform: translate(-12px, -6px) scale(1.04) rotate(-1deg); }
+  100% { opacity: 1; transform: translate(0, 0)        scale(1)    rotate(0deg); }
+}
+
+@keyframes cloud-float-1 {
+  0%   { transform: translate(0, 0)       scale(1)    rotate(0deg); }
+  30%  { transform: translate(22px, -14px) scale(1.04) rotate(1.2deg); }
+  60%  { transform: translate(10px, 10px)  scale(0.97) rotate(-0.8deg); }
+  100% { transform: translate(28px, -5px)  scale(1.02) rotate(0.5deg); }
+}
+
+@keyframes cloud-float-2 {
+  0%   { transform: translate(0, 0)         scale(1)    rotate(0deg); }
+  25%  { transform: translate(-18px, 12px)  scale(1.03) rotate(-1deg); }
+  55%  { transform: translate(-8px, -8px)   scale(0.96) rotate(1.5deg); }
+  100% { transform: translate(-24px, 6px)   scale(1.02) rotate(-0.6deg); }
+}
+
+@keyframes cloud-float-3 {
+  0%   { transform: translate(0, 0)        scale(1)    rotate(0deg); }
+  40%  { transform: translate(16px, -18px) scale(1.05) rotate(1.8deg); }
+  70%  { transform: translate(6px, 6px)    scale(0.95) rotate(-1.2deg); }
+  100% { transform: translate(20px, -10px) scale(1.03) rotate(0.8deg); }
+}
+
+@keyframes cloud-float-4 {
+  0%   { transform: translate(0, 0)         scale(1)    rotate(0deg); }
+  35%  { transform: translate(-20px, -16px) scale(1.06) rotate(-2deg); }
+  65%  { transform: translate(-6px, 8px)    scale(0.94) rotate(1deg); }
+  100% { transform: translate(-26px, -4px)  scale(1.02) rotate(-0.5deg); }
+}
+
+@keyframes cloud-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes cloud-bob-mirrored {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50%      { transform: scaleX(-1) translateY(-12px); }
+}
+
+@keyframes walker-move {
+  0%   { transform: translateY(0)     rotate(-1.5deg); }
+  20%  { transform: translateY(-10px) rotate(1deg); }
+  40%  { transform: translateY(-4px)  rotate(-0.5deg); }
+  60%  { transform: translateY(-12px) rotate(1.5deg); }
+  80%  { transform: translateY(-5px)  rotate(-1deg); }
+  100% { transform: translateY(0)     rotate(-1.5deg); }
+}
+
+@keyframes telefon-float {
+  0%   { transform: translateY(-50%) rotate(-2deg) scale(1); }
+  25%  { transform: translateY(calc(-50% - 14px)) rotate(1deg) scale(1.02); }
+  50%  { transform: translateY(calc(-50% - 6px))  rotate(-1deg) scale(1); }
+  75%  { transform: translateY(calc(-50% - 18px)) rotate(2deg) scale(1.02); }
+  100% { transform: translateY(-50%) rotate(-2deg) scale(1); }
+}
+
+@keyframes sms-appear {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.96); }
+  60%  { transform: translateY(-3px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes typing-blink {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50%       { opacity: 1;    transform: translateY(-5px); }
+}
+
+@keyframes menu-fade-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cloud-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(18px); }
+}
