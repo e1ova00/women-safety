@@ -57,21 +57,21 @@
 
 @font-face {
   font-family: 'Milligram';
-  src: url('../fonts/Milligram-Light-trial.ttf') format('truetype');
+  src: url('../assets/fonts/Milligram-Light-trial.ttf') format('truetype');
   font-weight: 300;
   font-display: swap; 
 }
 
 @font-face {
   font-family: 'Milligram';
-  src: url('../fonts/Milligram-Regular-trial.ttf') format('truetype');
+  src: url('../assets/fonts/Milligram-Regular-trial.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Milligram';
-  src: url('../fonts/Milligram-Medium-trial.ttf') format('truetype');
+  src: url('../assets/fonts/Milligram-Medium-trial.ttf') format('truetype');
   font-weight: 500;
   font-display: swap;
 }
