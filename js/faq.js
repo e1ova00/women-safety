@@ -1,4 +1,4 @@
-// faq.js — эксклюзивные табы категорий + аккордеон вопросов внутри
+
 
 document.addEventListener('DOMContentLoaded', function () {
   var faqList = document.getElementById('faqList');
@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var cats = Array.from(faqList.querySelectorAll('.faq-cat'));
 
-  // Инициализация: все категории закрыты
+
   cats.forEach(function (cat) {
     cat.querySelector('.faq-cat__body').style.maxHeight = '0';
   });
 
-  // Клик по заголовку категории
+  
   cats.forEach(function (cat) {
     var toggle = cat.querySelector('.faq-cat__toggle');
     var body   = cat.querySelector('.faq-cat__body');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var isOpen = cat.classList.contains('open');
 
       if (isOpen) {
-        // Закрываем — показываем все категории снова
+        
         cat.classList.remove('open');
         body.style.maxHeight = '0';
         plus.textContent = '+';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
           c.classList.remove('faq-cat--hidden');
         });
       } else {
-        // Открываем эту, скрываем остальные
+        
         cats.forEach(function (c) {
           if (c === cat) {
             c.classList.add('open');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Аккордеон вопросов внутри открытой категории
+  
   faqList.addEventListener('click', function (e) {
     var qBtn = e.target.closest('.faq-item__q');
     if (!qBtn) return;
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var catBody = cat.querySelector('.faq-cat__body');
     var isOpen  = item.classList.contains('open');
 
-    // Закрываем все вопросы в этой категории
+    
     cat.querySelectorAll('.faq-item').forEach(function (i) {
       i.classList.remove('open');
       i.querySelector('.faq-item__a').style.maxHeight = '0';
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
       answer.style.maxHeight = answer.scrollHeight + 'px';
     }
 
-    // Подгоняем высоту тела категории после раскрытия вопроса
+    
     catBody.style.maxHeight = catBody.scrollHeight + 'px';
   });
 });

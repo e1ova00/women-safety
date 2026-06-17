@@ -1,12 +1,12 @@
-// main.js
 
-/* ─── AOS ─────────────────────────────────────────────────── */
+
+
 AOS.init({ duration: 700, once: true, offset: 100 });
 
-/* ─── GSAP ────────────────────────────────────────────────── */
+
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── 1. Дорожка: прорисовка сверху вниз при скролле ───────── */
+
 gsap.fromTo('.features__path',
   { clipPath: 'inset(0 0 100% 0)', opacity: 1 },
   {
@@ -25,9 +25,7 @@ gsap.fromTo('.features__walker',
   }
 );
 
-/* Персонаж на дорожке: ставим вровень с блоком «Безопасный маршрут».
-   Процент от высоты секции ненадёжен (зависит от размеров картинок),
-   поэтому измеряем offsetTop route-блока в реальном DOM.           */
+
 (function () {
   var walker   = document.querySelector('.features__walker');
   var route    = document.querySelector('.feature--route');
@@ -45,12 +43,12 @@ gsap.fromTo('.features__walker',
   window.addEventListener('resize', alignWalker);
 })();
 
-/* ── 2. Облака «Почему Women Safety» ── ─────────────────────── */
+
 (function () {
   var whyClouds = Array.from(document.querySelectorAll('.why-cloud'));
   if (!whyClouds.length) return;
 
-  /* Параметры влёта: облака прилетают издалека с вращением и масштабом */
+
   var entrance = [
     { x: -320, y: 90,  rot: -16, scale: 0.58, dur: 2.0, delay: 0.00 },
     { x:  320, y: 80,  rot:  16, scale: 0.58, dur: 1.9, delay: 0.14 },
@@ -58,7 +56,7 @@ gsap.fromTo('.features__walker',
     { x:  260, y: 90,  rot:  12, scale: 0.62, dur: 2.1, delay: 0.20 }
   ];
 
-  /* Параметры бесконечного плавания после влёта */
+ 
   var floatPrms = [
     { dur: 11, fx:  30, fy: -16, fr:  2.8, fs: 0.04 },
     { dur: 14, fx: -24, fy: -18, fr: -2.2, fs: 0.03 },
@@ -94,9 +92,7 @@ gsap.fromTo('.features__walker',
     );
   });
 
-  /* Мышиный параллакс — облака мягко реагируют на движение курсора.
-     Используем CSS-свойство translate (не GSAP x/y), чтобы не конфликтовать
-     с бесконечным float выше. CSS Individual Transforms применяются независимо. */
+
   var depths = [14, 20, 10, 24];
   var whySec = document.querySelector('.why');
   if (!whySec || window.matchMedia('(pointer: coarse)').matches) return;
@@ -122,18 +118,7 @@ gsap.fromTo('.features__walker',
   });
 })();
 
-/* ── 3. SMS: живой диалог ──────────────────────────────────── */
-/*
-   Алгоритм для каждого сообщения:
-   1. Создаём индикатор набора (div.sms-typing) и вставляем
-      его ПРЯМО ПЕРЕД нужным сообщением — на его же стороне.
-   2. Плавно показываем индикатор.
-   3. Держим его 1.4 с.
-   4. Кроссфейд: индикатор исчезает, на его месте появляется
-      само сообщение (они оба в одной точке DOM).
-   5. Удаляем индикатор из DOM.
-   6. Пауза для чтения — только потом следующий шаг.
-*/
+
 (function () {
   var howTo = document.querySelector('.how-to');
   if (!howTo) return;
@@ -141,13 +126,13 @@ gsap.fromTo('.features__walker',
   var msgs = Array.from(howTo.querySelectorAll('.sms:not(.sms-typing)'));
   if (!msgs.length) return;
 
-  // Скрываем все сообщения без занятия места в лэйауте
+ 
   msgs.forEach(function (m) { m.style.display = 'none'; });
 
-  var HOLD  = 0.7;   // секунд показываем индикатор набора
-  var PAUSE = 1.0;   // секунд пауза после появления сообщения
+  var HOLD  = 0.7;   
+  var PAUSE = 1.0;   
 
-  // Вспомогательные промисы
+
   function wait(sec) {
     return new Promise(function (res) { setTimeout(res, sec * 1000); });
   }
@@ -162,34 +147,33 @@ gsap.fromTo('.features__walker',
       var msg    = msgs[i];
       var isLeft = msg.classList.contains('sms--left');
 
-      // ── Индикатор вставляется туда, где будет сообщение ──
+     
       var dot = document.createElement('div');
       dot.className = 'sms ' + (isLeft ? 'sms--left' : 'sms--right') + ' sms-typing';
       dot.innerHTML = '<span class="typing-dot"></span>'
                     + '<span class="typing-dot"></span>'
                     + '<span class="typing-dot"></span>';
-      msg.parentNode.insertBefore(dot, msg);   // прямо перед сообщением
+      msg.parentNode.insertBefore(dot, msg);   
 
-      // Показываем индикатор (fade-in снизу)
+     
       gsap.set(dot, { display: 'flex', opacity: 0, y: 8 });
       await tw(dot, { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' });
 
-      // Держим пока "печатают"
+      
       await wait(HOLD);
 
-      // Индикатор уходит вверх
+      
       await tw(dot, { opacity: 0, y: -8, duration: 0.1 });
 
-      // Удаляем индикатор — сообщение занимает его место в раскладке
+      
       if (dot.parentNode) dot.parentNode.removeChild(dot);
 
-      // Сообщение появляется снизу с небольшим сдвигом —
-      // это маскирует скачок раскладки и выглядит как «вылет из той же точки»
+      
       msg.style.display = '';
       gsap.set(msg, { opacity: 0, y: 16, scale: 0.96 });
       await tw(msg, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: 'back.out(1.5)' });
 
-      // Пауза: читаем сообщение
+      
       await wait(PAUSE);
     }
   }
@@ -205,21 +189,21 @@ gsap.fromTo('.features__walker',
   });
 })();
 
-/* ── 4. Кастомный розовый курсор ────────────────────────── */
+
 (function () {
   var cursor = document.getElementById('customCursor');
   if (!cursor) return;
 
-  /* Работает только на устройствах с мышью */
+  
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  /* Перемещаем кружок: напрямую через transform — без задержки */
+  
   document.addEventListener('mousemove', function (e) {
     cursor.style.transform =
       'translate(calc(' + e.clientX + 'px - 50%), calc(' + e.clientY + 'px - 50%))';
   });
 
-  /* Увеличиваем на интерактивных элементах */
+  
   document.querySelectorAll('a, button').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
       cursor.classList.add('custom-cursor--hover');
@@ -229,22 +213,12 @@ gsap.fromTo('.features__walker',
     });
   });
 
-  /* Прячем при выходе за пределы окна */
+  
   document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
   document.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; });
 })();
 
-/* ── 5. Магнитный эффект «Почему нам доверяют» ──────────── */
-/*
-   Баблы и персонаж плавно отодвигаются от курсора
-   и возвращаются на место.
 
-   Ключевой момент: используем CSS-свойство translate
-   (не transform), чтобы не конфликтовать с animation: float
-   на тех же элементах — они используют transform: translateY.
-   CSS Individual Transforms (translate / rotate / scale)
-   применяются поверх transform независимо.
-*/
 (function () {
   var trust = document.querySelector('.trust');
   if (!trust) return;
@@ -252,8 +226,8 @@ gsap.fromTo('.features__walker',
   var items = Array.from(trust.querySelectorAll('.trust__bubble, .trust__char'));
   if (!items.length) return;
 
-  var STRENGTH = 28;   /* максимальное смещение, px */
-  var RADIUS   = 240;  /* радиус влияния курсора, px */
+  var STRENGTH = 28;   
+  var RADIUS   = 240;  
 
   function resetAll () {
     items.forEach(function (item) {
